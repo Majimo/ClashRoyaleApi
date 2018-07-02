@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Clash Royale API Home";
+}
+
+<div class="jumbotron">
+    <h1>Clash Royale API Home</h1>
+    <p class="lead">@ViewBag.message</p>
+    <p>
+        @Html.ActionLink("Liste des Arènes", "Index", "Arena", new object { }, new { @class = "btn btn-primary btn-lg" })
+        @Html.ActionLink("Liste des Cartes", "Index", "Cards", new object { }, new { @class = "btn btn-primary btn-lg" })
+        @Html.ActionLink("Liste des Coffres", "Index", "Chest", new object { }, new { @class = "btn btn-primary btn-lg" })
+    </p>
+</div>
+
+<div class="row">
+    
+</div>

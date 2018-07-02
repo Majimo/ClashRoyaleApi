@@ -1,0 +1,45 @@
+﻿@model List<ClashRoyale.Models.Chest>
+
+@{
+    ViewBag.Title = "Clash Royale API Chests";
+}
+
+<h2>Coffres</h2>
+<table class="table">
+    <tr>
+        <th>
+            Nom
+        </th>
+        <th>
+            Or obtenu
+        </th>
+        <th>
+            Gemmes obtenues
+        </th>
+        <th>
+            Nombre de cartes obtenues
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gold.min) - @Html.DisplayFor(modelItem => item.gold.max)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gemCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cards.number)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item._id })
+        </td>
+    </tr>
+}
+
+</table>

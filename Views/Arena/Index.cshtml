@@ -1,0 +1,41 @@
+﻿@using ClashRoyale.Models
+@model List<ClashRoyale.Models.Arena>
+
+@{
+    ViewBag.Title = "Clash Royale API Arenas";
+}
+
+<h2>Arènes</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Nom
+        </th>
+        <th>
+            Or par Victoire
+        </th>
+        <th>
+            Trophées mini
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.victoryGold)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.minTrophies)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id=item._id })
+            </td>
+        </tr>
+    }
+
+</table>

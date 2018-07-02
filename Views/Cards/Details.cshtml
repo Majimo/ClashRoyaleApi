@@ -1,0 +1,69 @@
+﻿@model ClashRoyale.Models.Card
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Arène @Model.name</h4>
+    <hr />
+    <div class="row arenaDetails">
+
+        <div class="col-md-3">
+            Nom
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.name)
+        </div>
+
+        <div class="col-md-3">
+            Rareté
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.rarity)
+        </div>
+
+        <div class="col-md-3">
+            Type
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.type)
+        </div>
+
+        <div class="col-md-3">
+            Coût
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.elixirCost)
+        </div>
+
+        <div class="col-md-3">
+            Description
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.description)
+        </div>
+
+        <div class="col-md-3">
+            Image
+        </div>
+
+        <div class="col-md-8">
+            @{
+                var url = "http://www.clashapi.xyz/images/cards/" + @Model.idName + ".png";
+            }
+            <img src=@url height="200 px"/>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("<< Retour à la liste", "Index", "Cards", new object { }, new { @class = "btn btn-primary btn-lg" })
+</p>

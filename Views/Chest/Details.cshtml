@@ -1,0 +1,67 @@
+﻿@using ClashRoyale.Models
+@model ClashRoyale.Models.ChestArenaVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coffre @Model.Chest.name</h4>
+    <hr />
+
+    <div class="row arenaDetails">
+
+        <div class="col-md-3">
+            Nom
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Chest.name)
+        </div>
+
+        <div class="col-md-3">
+            Or Minimum
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Chest.gold.min)
+        </div>
+
+        <div class="col-md-3">
+            Or Maximum
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => model.Chest.gold.max)
+        </div>
+
+        <div class="col-md-3">
+            Obtenu dans l'arène
+        </div>
+
+        <div class="col-md-8">
+
+            @{
+                var urlImage = "http://www.clashapi.xyz/images/arenas/" + @Model.Arena.idName + ".png";
+            }
+
+            <a href='@Url.Action("Details", "Arena", new { id = Model.Arena._id })'>
+                <img src='@Url.Content(urlImage)' height="200 px" />
+            </a>
+
+        </div>
+
+        <div class="col-md-3">
+            Cartes possibles
+        </div>
+
+        <div class="col-md-8">
+            @Html.DisplayFor(model => Model.Chest.cards.number)
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("<< Retour à la liste", "Index", "Chest", new object { }, new { @class = "btn btn-primary btn-lg" })
+</p>

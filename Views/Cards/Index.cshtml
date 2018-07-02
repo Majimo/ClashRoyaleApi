@@ -1,0 +1,48 @@
+﻿@using ClashRoyale.Models
+@model List<ClashRoyale.Models.Card>
+
+@{
+    ViewBag.Title = "Clash Royale API Cards";
+}
+
+<h2>Cartes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nom
+        </th>
+        <th>
+            Rareté
+        </th>
+        <th>
+            Type
+        </th>
+        <th>
+            Coût
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rarity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.elixirCost)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item._id })
+            </td>
+        </tr>
+    }
+
+</table>

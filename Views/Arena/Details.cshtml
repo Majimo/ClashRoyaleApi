@@ -1,0 +1,90 @@
+﻿@using ClashRoyale.Models
+@model ClashRoyale.Models.ArenaCardVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Arène @Model.Arena.name</h4>
+    <hr />
+    <div class="row arenaDetails">
+        
+            <div class="col-md-3">
+                Nom
+            </div>
+
+            <div class="col-md-8">
+                @Html.DisplayFor(model => model.Arena.name)
+            </div>
+        
+            <div class="col-md-3">
+                Or par Victoire
+            </div>
+
+            <div class="col-md-8">
+                @Html.DisplayFor(model => model.Arena.victoryGold)
+            </div>
+        
+            <div class="col-md-3">
+                Trophées mini pour prochaine Arène
+            </div>
+
+            <div class="col-md-8">
+                @Html.DisplayFor(model => model.Arena.minTrophies)
+            </div>
+       
+            <div class="col-md-3">
+                Cartes dévérouillables
+            </div>
+
+            <div class="col-md-8">
+                @{
+                string urlCard = "";
+                }
+                @foreach (var item in Model.Cards)
+                {
+                {
+                urlCard = "http://www.clashapi.xyz/images/cards/" + @item.idName + ".png";
+                }
+
+                <a href='@Url.Action("Details", "Cards", new {id = item._id})'>
+                    <img src='@Url.Content(urlCard)' height="75px" />
+                </a>
+                }
+            </div>
+        
+            <div class="col-md-3">
+                Coffres disponibles
+            </div>
+
+            <div class="col-md-8">
+                <ul class="list-unstyled" id="chestsList">
+                    @foreach (var item in Model.Chests)
+                    {
+                    <li>
+                        @Html.ActionLink(item.name, "Details", "Chest", new {id = item._id}, null)
+                    </li>
+                    }
+                </ul>
+            </div>
+       
+            <div class="col-md-3">
+                Image
+            </div>
+
+            <div class="col-md-8">
+                @{
+                var url = "http://www.clashapi.xyz/images/arenas/" + @Model.Arena.idName + ".png";
+                }
+                <img src=@url height="300 px"/>
+            </div>
+        
+    </div>
+</div>
+<p>
+    @Html.ActionLink("<< Retour à la liste", "Index", "Arena", new object { }, new { @class = "btn btn-primary btn-lg" })
+</p>
+
